@@ -15,8 +15,6 @@ public class CameraFollow : MonoBehaviour
     {
         Vector3 upMove = transform.up * speed * Time.fixedDeltaTime;
 
-        
-
         rb.MovePosition(rb.position + upMove );
     }
     // Update is called once per frame

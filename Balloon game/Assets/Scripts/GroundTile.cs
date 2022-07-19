@@ -8,14 +8,26 @@ public class GroundTile : MonoBehaviour
     {
         groundSpawner = GameObject.FindObjectOfType<bgspawner>();
     }
+
     private void OnTriggerExit(Collider other)
     {
-        groundSpawner.SpawnTile();
+        groundSpawner.easySpawnTile();
         Destroy(gameObject, 2);
+        //int randomNumber = Random.Range(0, 2);
+        //if (randomNumber == 0)
+        //{
+        //    groundSpawner.easySpawnTile();
+        //    Destroy(gameObject, 2);
+        //}
+        //if(randomNumber == 1)
+        //{
+        //    groundSpawner.mediumSpawnTile();
+        //    Destroy(gameObject, 2);
+        //}
     }
     // Update is called once per frame
     void Update()
     {
-        
+        //float randomNumber = Random.Range(0, 2);
     }
 }

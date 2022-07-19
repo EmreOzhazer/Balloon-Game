@@ -15,11 +15,11 @@ public class PlayerMovement : MonoBehaviour
     {
         Vector3 upMove = transform.up * speed * Time.fixedDeltaTime;
 
-        Vector3 horizontalMove = transform.right * horizontalInput * speed * Time.fixedDeltaTime*2;
+        Vector3 horizontalMove = transform.right * horizontalInput * speed * Time.fixedDeltaTime * 2;
 
         Vector3 verticalMove = transform.up * verticalInput * speed * Time.fixedDeltaTime * 2;
 
-        rb.MovePosition(rb.position + upMove + horizontalMove+ verticalMove);
+        rb.MovePosition(rb.position + upMove + horizontalMove + verticalMove);
     }
 
     public Vector3 GetPosition()
@@ -27,8 +27,8 @@ public class PlayerMovement : MonoBehaviour
         return transform.position;
     }
 
-// Update is called once per frame
-void Update()
+    // Update is called once per frame
+    void Update()
     {
         horizontalInput = Input.GetAxis("Horizontal");
         verticalInput = Input.GetAxis("Vertical");
