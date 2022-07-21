@@ -1,15 +1,23 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class PlayerMovement : MonoBehaviour
 {
+    private static PlayerMovement instance;
+
+    public event EventHandler OnDead;
+
     public float speed = 250;
     public Rigidbody rb;
     // Start is called before the first frame update
 
     float horizontalInput;
     float verticalInput;
+    public bool isDead = false;
+
+
 
     private void FixedUpdate()
     {
@@ -32,5 +40,26 @@ public class PlayerMovement : MonoBehaviour
     {
         horizontalInput = Input.GetAxis("Horizontal");
         verticalInput = Input.GetAxis("Vertical");
+    }
+
+
+    private void Die()
+    {
+        isDead = true;
+        rb.velocity = Vector3.zero;
+        if (OnDead != null) OnDead(this, EventArgs.Empty);
+    }
+
+
+    public static void Die_Static()
+    {
+        instance.Die();
+        GameOverWindow.Show();
+        //int finalScore = Coin.coinCount + LevelGenerator.GetLevelPartsSpawned();
+        //HighscoreNameInputWindow.Show(finalScore, (string name) => {
+        //    HighscoreTable.AddHighscoreEntry_Static(finalScore, name);
+        //    HighscoreTable.Show();
+        //});
+        HighscoreTable.Show();
     }
 }
