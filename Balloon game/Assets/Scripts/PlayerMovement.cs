@@ -15,8 +15,14 @@ public class PlayerMovement : MonoBehaviour
 
     float horizontalInput;
     float verticalInput;
-    public bool isDead = false;
+    public bool isDead;
 
+    private void Awake()
+    {
+        instance = this;
+        rb = transform.GetComponent<Rigidbody>();
+        isDead = false;
+    }
 
 
     private void FixedUpdate()
@@ -40,6 +46,11 @@ public class PlayerMovement : MonoBehaviour
     {
         horizontalInput = Input.GetAxis("Horizontal");
         verticalInput = Input.GetAxis("Vertical");
+
+        if(isDead == true)
+        {
+            Die_Static();
+        }
     }
 
 
