@@ -9,6 +9,7 @@ public class CameraFollow : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        Debug.Log("camera started");
        // offset = transform.position - player.position;
     }
     private void FixedUpdate()
